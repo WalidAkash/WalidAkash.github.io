@@ -3,7 +3,7 @@ export const siteConfig = {
   author: 'Walid Akash',
   description:
     'Personal portfolio for Walid Akash, a Design and Verification Engineer focused on ASIC, FPGA, SystemVerilog, UVM, and coverage-driven verification.',
-  url: 'https://example.com',
+  url: 'https://WalidAkash.github.io',
   keywords: [
     'Design Verification Engineer',
     'ASIC verification',
@@ -14,9 +14,9 @@ export const siteConfig = {
     'Semiconductor',
   ],
   links: {
-    github: 'https://github.com/',
-    linkedin: 'https://www.linkedin.com/',
-    email: 'mailto:hello@example.com',
+    github: 'https://github.com/WalidAkash',
+    linkedin: 'https://www.linkedin.com/in/walid-bin-ataur-rahman-akash',
+    email: 'mailto:walidakash070@gmail.com',
   },
   themeStorageKey: 'walid-akash-theme',
 } as const;

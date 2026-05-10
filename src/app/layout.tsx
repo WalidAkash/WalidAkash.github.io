@@ -4,8 +4,9 @@ import type { ReactNode } from 'react';
 
 import { Footer } from '@/components/layout/footer';
 import { Navbar } from '@/components/layout/navbar';
+import { createSiteMetadata } from '@/lib/seo';
 import { siteConfig } from '@/config/site';
-import { ThemeProvider } from '@/providers/theme-provider';
+import { withBasePath } from '@/lib/utils';
 import './globals.css';
 
 const sans = Geist({
@@ -20,37 +21,7 @@ const mono = Geist_Mono({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  applicationName: siteConfig.name,
-  authors: [{ name: siteConfig.author }],
-  creator: siteConfig.author,
-  keywords: [...siteConfig.keywords],
-  alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: siteConfig.name,
-    description: siteConfig.description,
-  },
-  icons: {
-    icon: '/favicon.svg',
-  },
-};
+export const metadata: Metadata = createSiteMetadata();
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -84,18 +55,31 @@ type RootLayoutProps = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
+        <link rel="shortcut icon" href={withBasePath('/favicon.svg')} />
+        <link
+          rel="icon"
+          href={withBasePath('/favicon.svg')}
+          type="image/svg+xml"
+        />
+        <link rel="apple-touch-icon" href={withBasePath('/favicon.svg')} />
         <ThemeScript />
       </head>
       <body className={`${sans.variable} ${mono.variable} antialiased`}>
-        <ThemeProvider>
-          <div className="flex min-h-screen flex-col">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-        </ThemeProvider>
+        <a
+          href="#main-content"
+          className="bg-surface text-foreground focus-visible:outline-accent sr-only fixed top-4 left-4 z-[60] border px-4 py-2 focus:not-sr-only focus:outline focus:outline-2 focus:outline-offset-4"
+        >
+          Skip to main content
+        </a>
+        <div className="flex min-h-screen flex-col">
+          <Navbar />
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

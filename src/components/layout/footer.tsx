@@ -6,7 +6,7 @@ const socialLinks = [
   { href: siteConfig.links.github, label: 'GitHub' },
   { href: siteConfig.links.linkedin, label: 'LinkedIn' },
   { href: siteConfig.links.email, label: 'Email' },
-];
+].filter((link) => Boolean(link.href));
 
 export function Footer() {
   return (
@@ -21,7 +21,7 @@ export function Footer() {
             <Link
               key={link.label}
               href={link.href}
-              className="hover:text-foreground focus-visible:outline-accent transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+              className="hover:text-foreground focus-visible:outline-accent min-h-10 px-1 py-2 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
             >
               {link.label}
             </Link>

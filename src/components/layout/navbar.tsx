@@ -4,14 +4,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
+import { ThemeToggle } from '@/components/layout/theme-toggle';
 import { navItems, siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
-import { useTheme } from '@/providers/theme-provider';
 
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   return (
     <header className="border-line bg-background/85 sticky top-0 z-50 border-b backdrop-blur-xl">
@@ -32,6 +31,7 @@ export function Navbar() {
             <Link
               key={item.href}
               href={item.href}
+              aria-current={pathname === item.href ? 'page' : undefined}
               className={cn(
                 'text-muted hover:text-foreground focus-visible:outline-accent px-3 py-2 text-sm transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4',
                 pathname === item.href && 'text-foreground',
@@ -43,19 +43,11 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={toggleTheme}
-            className="border-line bg-surface text-foreground hover:border-accent focus-visible:outline-accent min-h-10 border px-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
-            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-            suppressHydrationWarning
-          >
-            {theme === 'dark' ? 'Light' : 'Dark'}
-          </button>
+          <ThemeToggle />
 
           <button
             type="button"
-            className="border-line bg-surface flex h-10 w-10 flex-col items-center justify-center gap-1.5 border md:hidden"
+            className="border-line bg-surface focus-visible:outline-accent flex h-10 w-10 flex-col items-center justify-center gap-1.5 border transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 md:hidden"
             aria-expanded={isOpen}
             aria-controls="mobile-navigation"
             aria-label="Toggle navigation menu"
@@ -78,7 +70,11 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-muted hover:text-foreground py-3 text-base transition"
+                aria-current={pathname === item.href ? 'page' : undefined}
+                className={cn(
+                  'text-muted hover:text-foreground focus-visible:outline-accent py-3 text-base transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4',
+                  pathname === item.href && 'text-foreground',
+                )}
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
