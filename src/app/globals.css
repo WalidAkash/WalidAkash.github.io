@@ -1,0 +1,83 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --background: #f6f7f2;
+  --foreground: #171a18;
+  --muted: #647067;
+  --surface: #ffffff;
+  --surface-strong: #ecf0e7;
+  --line: #d9dfd3;
+  --accent: #0f766e;
+  --accent-strong: #134e4a;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #0c0f0d;
+  --foreground: #edf2ee;
+  --muted: #9ba89f;
+  --surface: #121713;
+  --surface-strong: #1a221d;
+  --line: #28322b;
+  --accent: #5eead4;
+  --accent-strong: #99f6e4;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgb(15 118 110 / 14%),
+      transparent 28rem
+    ),
+    linear-gradient(180deg, var(--background), var(--surface-strong));
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--background);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
