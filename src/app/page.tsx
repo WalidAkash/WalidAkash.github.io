@@ -23,12 +23,15 @@ export default function Home() {
   return (
     <>
       <Section className="py-16 sm:py-20 lg:py-28">
-        <Container className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <Container className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="max-w-3xl">
             <Badge>{hero.eyebrow}</Badge>
             <h1 className="text-foreground mt-5 text-4xl leading-tight font-semibold sm:text-5xl lg:text-6xl">
               {hero.title}
             </h1>
+            <p className="text-accent-strong mt-4 font-mono text-lg font-semibold tracking-[0.12em] uppercase">
+              {hero.role}
+            </p>
             <p className="text-muted mt-6 max-w-2xl text-lg leading-8">
               {hero.description}
             </p>
@@ -43,45 +46,46 @@ export default function Home() {
                 </ButtonLink>
               ))}
             </div>
+            <div className="border-line bg-surface/80 mt-10 grid overflow-hidden border shadow-lg shadow-black/5 sm:max-w-2xl sm:grid-cols-3 dark:shadow-black/20">
+              {hero.stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="border-line border-t p-5 first:border-t-0 sm:border-t-0 sm:border-l sm:first:border-l-0"
+                >
+                  <p className="text-accent-strong font-mono text-lg font-semibold">
+                    {stat.value}
+                  </p>
+                  <p className="text-muted mt-2 text-sm font-semibold">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <Card
-            as="aside"
-            aria-label="Professional profile summary"
-            className="overflow-hidden"
+          <aside
+            aria-label="Walid Bin Ataur Rahman Akash profile photo"
+            className="relative mx-auto aspect-square w-full max-w-sm sm:max-w-md lg:max-w-lg"
           >
-            <div className="bg-line grid gap-px sm:grid-cols-[0.9fr_1.1fr] lg:grid-cols-1 xl:grid-cols-[0.9fr_1.1fr]">
-              <div className="bg-surface">
-                {/* Using a plain image here keeps the exported asset path correct on GitHub Pages. */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={withBasePath(hero.image.src)}
-                  alt={hero.image.alt}
-                  width={960}
-                  height={960}
-                  loading="eager"
-                  fetchPriority="high"
-                  decoding="async"
-                  className="aspect-square h-full w-full object-cover"
-                />
-              </div>
-              <div className="bg-surface p-6">
-                <p className="text-muted font-mono text-sm tracking-[0.18em] uppercase">
-                  Profile snapshot
-                </p>
-                <div className="mt-5 grid gap-4">
-                  {hero.stats.map((stat) => (
-                    <div key={stat.label}>
-                      <p className="text-muted text-sm">{stat.label}</p>
-                      <p className="text-accent-strong mt-1 font-mono text-lg">
-                        {stat.value}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div
+              aria-hidden="true"
+              className="bg-surface-strong border-line absolute inset-8 rounded-full border"
+            />
+            <div className="border-line bg-surface relative h-full overflow-hidden rounded-full border shadow-lg shadow-black/5 dark:shadow-black/20">
+              {/* Using a plain image here keeps the exported asset path correct on GitHub Pages. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={withBasePath(hero.image.src)}
+                alt={hero.image.alt}
+                width={1440}
+                height={2160}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="h-full w-full object-cover object-top"
+              />
             </div>
-          </Card>
+          </aside>
         </Container>
       </Section>
 

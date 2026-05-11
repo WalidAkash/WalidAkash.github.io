@@ -1,11 +1,12 @@
 export const homeContent = {
   hero: {
-    eyebrow: 'Design Verification Engineer',
-    title: 'Verifying complex silicon with disciplined, coverage-driven flows.',
+    eyebrow: 'Hi, I am Walid',
+    title: 'Walid Bin Ataur Rahman Akash',
+    role: 'Design & Verification Engineer',
     description:
-      'Walid Bin Ataur Rahman Akash is a Design Verification Engineer focused on SystemVerilog, UVM, SVA, RTL debug, and reusable verification environments for digital IPs and SoCs.',
+      'A Design & Verification Engineer with over 3+ years of experience in functional verification of complex digital IPs and SoCs. Strong background in SystemVerilog, UVM, SVA, and coverage-driven verification methodologies.',
     image: {
-      src: '/walid-akash-profile.jpg',
+      src: '/walid_akash_profile_photo.jpg',
       alt: 'Walid Bin Ataur Rahman Akash',
     },
     actions: [
@@ -13,8 +14,8 @@ export const homeContent = {
       { href: '/contact', label: 'Contact Walid', variant: 'secondary' },
     ],
     stats: [
-      { label: 'Experience', value: '3+ years' },
-      { label: 'Methodology', value: 'UVM / SVA' },
+      { label: 'Experiences', value: '3+ years' },
+      { label: 'Methodologies', value: 'UVM / SVA' },
       { label: 'Focus', value: 'IP & SoC DV' },
     ],
   },

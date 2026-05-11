@@ -11,7 +11,7 @@
 
 ## Summary
 
-Design Verification Engineer with over 3+ years of experience in functional verification of complex digital IPs and SoCs. Strong background in SystemVerilog, UVM, SVA, and coverage-driven verification methodologies. Experienced in building reusable verification environments, developing test plans, writing constrained-random and directed tests, creating assertions, and performing debug at RTL and waveform level.
+A Design & Verification Engineer with over 3+ years of experience in functional verification of complex digital IPs and SoCs. Strong background in SystemVerilog, UVM, SVA, and coverage-driven verification methodologies. Experienced in building reusable verification environments, developing test plans, writing constrained-random and directed tests, creating assertions, and performing debug at RTL and waveform level.
 
 Hands-on expertise in verifying protocols and interfaces, analyzing failures, closing functional and code coverage, and ensuring design quality through regression planning and root-cause analysis. Comfortable working across the full verification lifecycle, from spec review and verification planning to testbench development, simulation debug, and signoff support. Strong collaboration with RTL design, architecture, and backend teams to improve verification efficiency and product reliability.
 
